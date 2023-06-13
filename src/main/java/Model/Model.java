@@ -33,11 +33,12 @@ public class Model implements iGetModel {
     @Override
     public boolean delete(int studentNum) {
         List<Student> studList = getAllStudents();
-        for(Student student : studList) {
+        for (Student student : studList) {
             if (student.getId() == studentNum) {
                 studList.remove(student);
                 return true;
             }
-        return false;
         }
+        return false;
+    }
 }

@@ -78,7 +78,7 @@ public class Controller {
                     break;
                 case DELETE:
                     getAllStudents();
-                    String studentNum = Integer.intParse(view.prompt("Введите номер студента: "));
+                    int studentNum = Integer.parseInt(view.prompt("Введите номер студента: "));
                     boolean result = model.delete(studentNum);
                     view.didWeDelete(result);
             }

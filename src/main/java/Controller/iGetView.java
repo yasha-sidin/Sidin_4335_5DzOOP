@@ -19,6 +19,16 @@ public interface iGetView {
      */
     String prompt(String message);
 
+    /**
+     *
+     * @param  result true or false in depending on existing of Student in List
+     * @return print result of deleting
+     */
     void didWeDelete(boolean result);
+
+    /**
+     *
+     * Print info about exit from program
+     */
     void exit();
 }

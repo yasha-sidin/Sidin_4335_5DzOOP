@@ -2,15 +2,25 @@ package Model;
 
 import Controller.iGetModel;
 
-import java.util.HashMap;
+import java.util.*;
 
-public class HashModel implements iGetModel<HashMap> {
+public class HashModel implements iGetModel {
     private HashMap<Long, Student> students;
     public HashModel(HashMap<Long, Student> students) {
         this.students = students;
     }
     public List getAllStudents() {
-        return (List)students.entrySet();
+        List listStud = new ArrayList<>();
+        Object[] keys = students.keySet().toArray();
+        Object[] values = students.values().toArray();
+        for(int i = 0; i < students.size(); i++) {
+            Object[] keyValue = new Object[2];
+            keyValue[0] = keys[i];
+            keyValue[1] = values[i];
+            List temp = new ArrayList<>(Arrays.asList(keyValue));
+            listStud.add(temp);
+        }
+        return listStud;
     }
 
     @Override
@@ -20,10 +30,11 @@ public class HashModel implements iGetModel<HashMap> {
 
     @Override
     public boolean delete(int studentNum) {
-        List studList = getAllStudents();
-        for(var item : studList) {
-            if (item[1].getId() == studentNum) {
-                studList.remove(item[1]);
+        List<List> studList = getAllStudents();
+        for(int i = 0; i < studList.size(); i++) {
+            Student temp = (Student) studList.get(i).get(1);
+            if (temp.getId() == studentNum) {
+                students.remove(studList.get(i).get(0));
                 return true;
             }
         }

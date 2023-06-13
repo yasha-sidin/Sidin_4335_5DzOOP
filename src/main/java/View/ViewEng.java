@@ -25,14 +25,14 @@ public class ViewEng implements iGetView {
     }
 
     @Override
-    void didWeDelete(boolean result) {
+    public void didWeDelete(boolean result) {
         if (result == false) {
-            System.out.println("Student with this id exist")
+            System.out.println("Student with this id exist");
         }
     }
 
     @Override
-    void exit() {
+    public void exit() {
         System.out.println("You exited from program!"); 
     }
 }

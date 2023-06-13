@@ -14,7 +14,7 @@ public class View implements iGetView {
     public void printAllStudents(List students) {
         System.out.println("------------Все студенты------------");
         for(var stud: students) {
-            System.out.println(stud);
+            System.out.println(stud.toString());
         }
         System.out.println("------------Конец списка------------");
     }
@@ -27,14 +27,14 @@ public class View implements iGetView {
     }
 
     @Override
-    void didWeDelete(boolean result) {
+    public void didWeDelete(boolean result) {
         if (result == false) {
-            System.out.println("Нет такого студента")
+            System.out.println("Нет такого студента");
         }
     }
 
     @Override
-    void exit() {
+    public void exit() {
         System.out.println("Вы вышли из программы!"); 
     }
 }

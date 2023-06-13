@@ -1,10 +1,8 @@
 package Model;
 
 import Controller.iGetModel;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 public class FileModel implements iGetModel {
@@ -62,13 +60,11 @@ public class FileModel implements iGetModel {
      * @return save list of Students in file
      */
     public void saveAllStudentToFile(List<Student> students) {
-        try (FileWriter fw = new FileWriter(fileName, true)) {
-            fw.close()
+        try(FileWriter fw = new FileWriter(fileName, false)) {
             for (Student pers : students) {
                 fw.write(pers.getFirstName() + " " + pers.getSecondName() + " " + pers.getAge() + " " + pers.getId());
                 fw.append('\n');
             }
-            fw.flush();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -77,16 +73,15 @@ public class FileModel implements iGetModel {
     @Override
     public boolean delete(int studentNum) {
         List<Student> studList = getAllStudents();
-        for(Student student : studList) {
+        for (Student student : studList) {
             if (student.getId() == studentNum) {
                 studList.remove(student);
-                saveAllStudentsToFile(studList);
+                saveAllStudentToFile(studList);
                 return true;
             }
-        return false;
         }
-
-
+        return false;
     }
 }
+
 

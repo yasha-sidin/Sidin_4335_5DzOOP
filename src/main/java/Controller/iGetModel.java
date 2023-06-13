@@ -5,7 +5,7 @@ import Model.Student;
 import java.util.Collections;
 import java.util.List;
 
-public interface iGetModel{
+public interface iGetModel {
     /**
      *
      * @return current class list of Students
@@ -20,7 +20,7 @@ public interface iGetModel{
 
     /**
     *
-    * @return delete student by his number or output info about existing of student with this number
+    * @return delete student by his id or output info about existing of student with this id
     */
     public boolean delete(int studentNum);
 }
